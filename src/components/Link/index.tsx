@@ -7,7 +7,7 @@ export function NavLink(props: NavLinkProps) {
   return (
     <Link
       data-current={pathname === props.to}
-      className="flex items-center gap-1 font-medium leading-none text-gray-900 data-[current=true]:text-purple-secondary"
+      className="flex items-center gap-1 leading-none text-gray-900 data-[current=true]:text-purple-primary"
       {...props}
     />
   )

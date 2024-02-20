@@ -14,15 +14,15 @@ export function Header() {
   }
 
   return (
-    <div className="fixed top-0 z-50 w-full border-b border-gray-500 px-2 shadow-sm">
+    <div className="fixed top-0 z-50 w-full border-b border-gray-300 bg-white px-2 shadow-sm">
       <header className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-1">
         <div className="flex items-center gap-6">
           <img
             src={CoffeeDeliveryLoggo}
-            className="xsm:border-r h-9 border-gray-500 pr-5"
+            className="h-9 border-gray-500 pr-5 xsm:border-r"
             alt="Logo da Coffee Delivery"
           />
-          <div className="xsm:flex hidden items-center gap-3">
+          <div className="hidden items-center gap-3 xsm:flex">
             <NavLink to="/">
               <House size={17} /> Home
             </NavLink>
