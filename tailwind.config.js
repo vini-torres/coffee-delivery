@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        default: 'Roboto, sans-serif',
+        default: 'Inter, sans-serif',
       },
       colors: {
         gray: {
@@ -16,7 +16,7 @@ export default {
           600: '#8D8686',
           700: '#574F4D',
           800: '#403937',
-          900: '#121214',
+          900: '#272221',
         },
         yellow: {
           primary: '#DBAC2C',
@@ -29,6 +29,7 @@ export default {
       },
       screens: {
         xsm: '400px',
+        xmd: '900px',
       },
     },
   },
