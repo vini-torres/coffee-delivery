@@ -10,7 +10,7 @@ export interface AdvantageProps {
 
 export function Advantage({ Icon, description, type }: AdvantageProps) {
   return (
-    <li className="xmd:min-w-[14rem] flex min-w-[20rem] items-center gap-3 text-sm">
+    <li className="flex min-w-[20rem] items-center gap-3 text-sm xmd:min-w-[14rem]">
       <Icon
         className={cx('h-8 w-8 rounded-full p-[0.4375rem] text-gray-100', {
           'bg-yellow-secondary': type === 'Cart',
