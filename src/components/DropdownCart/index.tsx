@@ -13,7 +13,7 @@ export function DropdownCart({ isOpen = false, onClose }: DropDownCartProps) {
       role="dialog"
       aria-modal={isOpen}
       data-current={isOpen}
-      className="absolute right-0 top-[4.25rem] hidden w-96 flex-col rounded shadow-md data-[current=true]:flex"
+      className="absolute right-0 top-[4.25rem] z-50 hidden w-96 flex-col rounded bg-white shadow-md data-[current=true]:flex"
     >
       <header className="flex h-16 w-full items-center justify-between border-b px-4">
         <h3 className="text-lg font-medium text-gray-900">Meu Carrinho</h3>
