@@ -1,4 +1,6 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
+
+import { InputNumber } from '../../../../../components/InputNumber'
 
 interface ProductProps {
   id: number
@@ -45,25 +47,10 @@ export function Product({ coffee }: CoffeeProps) {
         <span className="mr-2 text-2xl font-bold text-gray-700">
           <span className="text-sm">R$</span> {coffee.price}
         </span>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center rounded bg-gray-400 bg-opacity-80 px-2">
-            <button type="button">
-              <Minus className="text-purple-secondary" />
-            </button>
-            <input
-              type="text"
-              className="h-8 w-7 bg-transparent text-center text-gray-900 outline-none"
-              value={1}
-              readOnly
-            />
-            <button type="button">
-              <Plus className="text-purple-secondary" />
-            </button>
-          </div>
-          <button className="flex h-8 w-9 items-center justify-center rounded bg-purple-secondary text-white hover:bg-purple-primary">
-            <ShoppingCart size={20} />
-          </button>
-        </div>
+        <InputNumber value={1} />
+        <button className="flex h-8 w-9 items-center justify-center rounded bg-purple-secondary text-white hover:bg-purple-primary">
+          <ShoppingCart size={20} />
+        </button>
       </div>
     </div>
   )
