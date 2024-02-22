@@ -1,5 +1,6 @@
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 
+import { ProductCart } from '../../../components/ProductCart'
 import { Input, InputProps } from './components/Input'
 import { PaymentMethod } from './components/PaymentMethod'
 import { Preface } from './components/Preface'
@@ -27,7 +28,7 @@ export function Cart() {
   ]
 
   return (
-    <form className="mx-auto mt-32 max-w-6xl px-2">
+    <form className="mx-auto mt-32 flex max-w-6xl gap-10 px-2">
       <div>
         <h3 className="mb-4 font-bold text-gray-700">Complete seu pedido</h3>
         <div className="flex w-full max-w-[40rem] flex-col gap-3">
@@ -71,6 +72,28 @@ export function Cart() {
                 )
               })}
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full">
+        <h3 className="mb-4 font-bold text-gray-700">Cafés selecionados</h3>
+        <div className="rounded rounded-bl-3xl rounded-tr-3xl bg-gray-200 p-10">
+          <div className="flex max-h-[26rem] flex-col gap-6 overflow-auto [&::-webkit-scrollbar]:w-0">
+            <ProductCart controls />
+          </div>
+          <div className="mt-5 flex flex-col gap-4">
+            <p className="flex items-center justify-between text-sm text-gray-700">
+              Total de itens
+              <span>R$ 9.9</span>
+            </p>
+            <p className="flex items-center justify-between text-sm text-gray-700">
+              Entrega
+              <span>R$ 9.9</span>
+            </p>
+            <h4 className="flex items-center justify-between text-xl font-bold text-gray-800">
+              Total
+              <span>R$ 9.9</span>
+            </h4>
           </div>
         </div>
       </div>

@@ -31,16 +31,16 @@ export function Home() {
 
   return (
     <section className="mx-auto mb-16 mt-32 max-w-6xl space-y-16 px-2">
-      <div className="xmd:text-start xmd:flex-row xmd:justify-between xmd:gap-0 flex flex-col items-center justify-center gap-4 text-center">
+      <div className="flex flex-col items-center justify-center gap-4 text-center xmd:flex-row xmd:justify-between xmd:gap-0 xmd:text-start">
         <div>
           <h1 className="text-3xl font-semibold text-gray-900 md:text-5xl">
             Encontre o café perfeito para qualquer hora do dia
           </h1>
-          <p className="xmd:max-w-[85%] xmd:text-lg mt-4 text-gray-800">
+          <p className="mt-4 text-gray-800 xmd:max-w-[85%] xmd:text-lg">
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
             hora
           </p>
-          <ul className="xmd:justify-normal xmd:gap-x-10 mt-12 flex flex-wrap justify-center gap-y-7">
+          <ul className="mt-12 flex flex-wrap justify-center gap-y-7 xmd:justify-normal xmd:gap-x-10">
             {advantageItens.map((item, index) => {
               return (
                 <Advantage
