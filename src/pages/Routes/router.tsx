@@ -1,18 +1,20 @@
-import { Route, Routes } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
-import { Cart } from '../app/Cart'
 import { Delivery } from '../app/Delivery'
-import { Home } from '../app/Home'
-import { DefaultLayout } from '../layouts/defaultLayout'
+import { CartLayout } from '../layouts/cart'
+import { HomeLayout } from '../layouts/home'
 
-export function RoutesApp() {
-  return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/delivery" element={<Delivery />} />
-      </Route>
-    </Routes>
-  )
-}
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout />,
+  },
+  {
+    path: '/cart',
+    element: <CartLayout />,
+  },
+  {
+    path: '/delivery',
+    element: <Delivery />,
+  },
+])
