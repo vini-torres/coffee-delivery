@@ -28,8 +28,8 @@ export function Cart() {
   ]
 
   return (
-    <form className="mx-auto mt-32 flex max-w-6xl gap-10 px-2">
-      <div>
+    <form className=" mx-auto mb-10 mt-32 flex max-w-[40rem] flex-col items-center gap-10 px-2 xmd:max-w-6xl xmd:flex-row xmd:items-start">
+      <div className="w-full">
         <h3 className="mb-4 font-bold text-gray-700">Complete seu pedido</h3>
         <div className="flex w-full max-w-[40rem] flex-col gap-3">
           <div className="rounded bg-gray-200 p-10">
@@ -61,7 +61,7 @@ export function Cart() {
               description="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
             />
 
-            <div className="flex justify-between">
+            <div className="flex flex-col justify-between gap-2 md:flex-row md:gap-0">
               {paymentMethods.map((method, index) => {
                 return (
                   <PaymentMethod
@@ -77,7 +77,7 @@ export function Cart() {
       </div>
       <div className="w-full">
         <h3 className="mb-4 font-bold text-gray-700">Cafés selecionados</h3>
-        <div className="rounded rounded-bl-3xl rounded-tr-3xl bg-gray-200 p-10">
+        <div className="rounded bg-gray-200 p-10 md:rounded-bl-3xl md:rounded-tr-3xl">
           <div className="flex max-h-[26rem] flex-col gap-6 overflow-auto [&::-webkit-scrollbar]:w-0">
             <ProductCart controls />
           </div>

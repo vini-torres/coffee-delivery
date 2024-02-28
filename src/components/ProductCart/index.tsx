@@ -23,7 +23,7 @@ export function ProductCart({ controls }: ProductCartProps) {
       <div className="flex-1">
         <h3 className="font-medium">Capuccino</h3>
         {!controls && (
-          <span className="mb-1 block text-sm text-gray-600">
+          <span className="mb-1 block truncate text-sm text-gray-600">
             Cappucino is very delicious.
           </span>
         )}
@@ -33,17 +33,18 @@ export function ProductCart({ controls }: ProductCartProps) {
             <InputNumber value={1} />
             <button
               type="button"
-              className="flex h-8 w-[5.6875rem] items-center justify-center gap-1 rounded border border-purple-primary text-xs uppercase text-purple-primary transition-colors duration-200  hover:bg-purple-primary hover:text-white"
+              className="flex h-8 w-8 items-center justify-center gap-1 rounded border border-purple-primary text-xs uppercase text-purple-primary transition-colors duration-200 hover:bg-purple-primary hover:text-white xsm:w-[5.6875rem]"
             >
-              <Trash />
-              Remover
+              <Trash className="h-4 w-4" />
+              <span className="hidden xsm:flex">Remover</span>
             </button>
           </div>
         )}
 
         <p
           className={cx('text-lg font-bold', {
-            'absolute right-0 top-1': controls,
+            'right-0 top-0 mt-2 text-sm xsm:absolute xsm:mt-0 xsm:text-lg':
+              controls,
           })}
         >
           <span className="text-xs font-medium">R$</span> 49.99
