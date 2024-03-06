@@ -1,11 +1,18 @@
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 
 import { ProductCart } from '../../../components/ProductCart'
+import { useCart } from '../../../hooks/useCart'
+import { PriceFormatted } from '../../../utils/formatted-price'
 import { Input, InputProps } from './components/Input'
 import { PaymentMethod } from './components/PaymentMethod'
 import { Preface } from './components/Preface'
 
 export function Cart() {
+  const { cart, totalValueOfItems } = useCart()
+
+  const deliveryValue = 3.5
+  const finalPriceWithDelivery = totalValueOfItems + deliveryValue
+
   const allInputs: InputProps[] = [
     { type: 'text', placeholder: 'Cep', placeholderUpperCase: true },
     { type: 'text', placeholder: 'Rua', className: 'md:col-span-3' },
@@ -79,20 +86,27 @@ export function Cart() {
         <h3 className="mb-4 font-bold text-gray-700">Cafés selecionados</h3>
         <div className="rounded bg-gray-200 p-10 md:rounded-bl-3xl md:rounded-tr-3xl">
           <div className="flex max-h-[26rem] flex-col gap-6 overflow-auto [&::-webkit-scrollbar]:w-0">
-            <ProductCart controls />
+            {cart.map((cart) => (
+              <ProductCart key={cart.id} coffee={cart} controls />
+            ))}
           </div>
           <div className="mt-5 flex flex-col gap-4">
             <p className="flex items-center justify-between text-sm text-gray-700">
               Total de itens
-              <span>R$ 9.9</span>
+              <span>R$ {PriceFormatted(totalValueOfItems)}</span>
             </p>
             <p className="flex items-center justify-between text-sm text-gray-700">
               Entrega
-              <span>R$ 9.9</span>
+              <span>
+                R$ {PriceFormatted(cart.length === 0 ? 0 : deliveryValue)}
+              </span>
             </p>
             <h4 className="flex items-center justify-between text-xl font-bold text-gray-800">
               Total
-              <span>R$ 9.9</span>
+              <span>
+                R${' '}
+                {PriceFormatted(cart.length === 0 ? 0 : finalPriceWithDelivery)}
+              </span>
             </h4>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { X } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 
+import { useCart } from '../../hooks/useCart'
 import { ProductCart } from '../ProductCart'
 
 interface DropDownCartProps {
@@ -9,6 +10,7 @@ interface DropDownCartProps {
 }
 
 export function DropdownCart({ isOpen = false, onClose }: DropDownCartProps) {
+  const { cart } = useCart()
   return (
     <div
       role="dialog"
@@ -24,7 +26,9 @@ export function DropdownCart({ isOpen = false, onClose }: DropDownCartProps) {
       </header>
       <div className="flex flex-col gap-6 px-4 pb-4 pt-6">
         <div className="flex max-h-[29.375rem] flex-1 flex-col gap-4 overflow-auto [&::-webkit-scrollbar]:w-0">
-          <ProductCart />
+          {cart.map((cart) => (
+            <ProductCart key={cart.id} coffee={cart} />
+          ))}
         </div>
         <NavLink to="/cart">
           <button className="h-11 w-full rounded border border-purple-primary text-purple-primary">

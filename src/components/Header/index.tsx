@@ -2,11 +2,12 @@ import { House, Package, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 
 import CoffeeDeliveryLoggo from '../../assets/Logo.svg'
+import { useCart } from '../../hooks/useCart'
 import { DropdownCart } from '../DropdownCart'
 import { NavLink } from '../Link'
 
 export function Header() {
-  const cart = []
+  const { cart } = useCart()
   const [isOpenCart, setIsOpenCart] = useState(false)
 
   const handleOpenModalCart = () => {

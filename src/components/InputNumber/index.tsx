@@ -4,17 +4,24 @@ interface InputNumberProps {
   value: number
   handleValueIncrement?: () => void
   handleValueDecrement?: () => void
+  disabledDecrement?: boolean
 }
 
 export function InputNumber({
   value,
   handleValueIncrement,
   handleValueDecrement,
+  disabledDecrement,
 }: InputNumberProps) {
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center rounded bg-gray-400 bg-opacity-80 px-2">
-        <button onClick={handleValueDecrement} type="button">
+        <button
+          disabled={disabledDecrement}
+          onClick={handleValueDecrement}
+          className="disabled:cursor-not-allowed"
+          type="button"
+        >
           <Minus className="text-purple-secondary" />
         </button>
         <input
