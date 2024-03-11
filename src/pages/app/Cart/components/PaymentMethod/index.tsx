@@ -1,41 +1,37 @@
-import cx from 'classnames'
 import { IconProps } from 'phosphor-react'
-import { ForwardRefExoticComponent, RefAttributes } from 'react'
+import {
+  forwardRef,
+  ForwardRefExoticComponent,
+  InputHTMLAttributes,
+  RefAttributes,
+} from 'react'
 
-interface PaymentMethodProps {
+type PaymentMethodInputProps = InputHTMLAttributes<HTMLInputElement> & {
   Icon: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
-  value: string
-  isActive?: boolean
-  onClick?: () => void
+  label: string
 }
 
-export function PaymentMethod({
-  Icon,
-  value,
-  isActive,
-  onClick,
-}: PaymentMethodProps) {
+export const PaymentMethod = forwardRef<
+  HTMLInputElement,
+  PaymentMethodInputProps
+>(({ id, Icon, label, ...props }, ref) => {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cx(
-        'flex w-full items-center gap-2 rounded border py-3 pl-4 text-xs transition-colors duration-200 md:w-[11.125rem]',
-        {
-          'border-purple-secondary bg-purple-primary bg-opacity-20  text-purple-secondary hover:bg-opacity-30':
-            isActive,
-          'bg-gray-400 hover:border-purple-secondary': !isActive,
-        },
-      )}
-    >
-      <Icon
-        size={18}
-        className={cx('', {
-          'text-purple-secondary': isActive,
-          'text-purple-primary': !isActive,
-        })}
+    <div className="flex w-full items-center gap-2 rounded border bg-gray-400 py-3 pl-4 text-xs transition-colors duration-200 checked:border-purple-secondary checked:bg-purple-primary checked:bg-opacity-20  checked:text-purple-secondary hover:border-purple-secondary  hover:bg-opacity-30 md:w-[11.125rem]">
+      <input
+        id={id}
+        type="radio"
+        {...props}
+        name="paymentMethod"
+        ref={ref}
+        className="appearance-none"
       />
-      {value}
-    </button>
+      <Icon
+        size={20}
+        className="text-purple-secondary checked:text-purple-primary"
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
   )
-}
+})
+
+PaymentMethod.displayName = 'PaymentMethod'

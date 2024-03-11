@@ -1,10 +1,16 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import emptyState from '../../../assets/Illustration.svg'
 import CoffeeDeliveryLoggo from '../../../assets/Logo.svg'
+import { FormDataSchema, paymentMethods } from '../Cart'
+
+interface LocationType {
+  state: FormDataSchema
+}
 
 export function Delivery() {
+  const { state } = useLocation() as unknown as LocationType
   return (
     <section className="mx-auto mt-10 flex max-w-6xl flex-col items-center px-2 lg:items-start">
       <NavLink to="/">
@@ -28,10 +34,12 @@ export function Delivery() {
                 <p>
                   Entrega em{' '}
                   <span className="font-bold">
-                    Rua João Daniel Martinelli, 102
+                    {state.street}, {state.number}
                   </span>
                 </p>
-                <span>Farrapos - Porto Alegre, Rs</span>
+                <span>
+                  {state.district} - {state.city}, {state.uf}
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -51,7 +59,9 @@ export function Delivery() {
               />
               <div className="text-sm text-gray-800">
                 <p>Pagamento na entrega</p>
-                <span className="font-bold">Cartão de débito</span>
+                <span className="font-bold">
+                  {paymentMethods[state.paymentMethod].label}
+                </span>
               </div>
             </div>
           </div>
