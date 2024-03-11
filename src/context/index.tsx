@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 import { CartCoffeeProps } from '../components/ProductCart'
 
@@ -21,12 +21,24 @@ interface CartContextProps {
 
 export const CartContext = createContext({} as CartContextProps)
 
+const COFFEE_DATA_LOCAL_STORAGE = 'coffee_data_storage'
+
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<CartProductProps[]>([])
+  const [cart, setCart] = useState<CartProductProps[]>(() => {
+    const StorgaedCoffees = localStorage.getItem(COFFEE_DATA_LOCAL_STORAGE)
+    if (StorgaedCoffees) {
+      return JSON.parse(StorgaedCoffees)
+    }
+    return []
+  })
 
   const totalValueOfItems = cart.reduce((total, item) => {
     return total + item.price * item.amount
   }, 0)
+
+  useEffect(() => {
+    localStorage.setItem(COFFEE_DATA_LOCAL_STORAGE, JSON.stringify(cart))
+  }, [cart])
 
   const handleAddProductInTheCart = (currentProduct: CartProductProps) => {
     const thisProductExistsInTheCart = cart.findIndex(
