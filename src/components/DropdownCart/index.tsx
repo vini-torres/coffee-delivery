@@ -25,6 +25,11 @@ export function DropdownCart({ isOpen = false, onClose }: DropDownCartProps) {
         </button>
       </header>
       <div className="flex flex-col gap-6 px-4 pb-4 pt-6">
+        {cart.length <= 0 && (
+          <h3 className="flex justify-center font-semibold text-gray-700">
+            Nenhum item adicionado
+          </h3>
+        )}
         <div className="flex max-h-[29.375rem] flex-1 flex-col gap-4 overflow-auto [&::-webkit-scrollbar]:w-0">
           {cart.map((cart) => (
             <ProductCart key={cart.id} coffee={cart} />

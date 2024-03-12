@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import cx from 'classnames'
 import {
   Bank,
   CreditCard,
@@ -174,11 +175,20 @@ export function Cart() {
               <p className=" text-gray-800">Carrinho</p>
             </div>
             <div className="flex max-h-[26rem] flex-col gap-6 overflow-auto [&::-webkit-scrollbar]:w-0">
+              {cart.length <= 0 && (
+                <h3 className="mb-5 mt-5 flex justify-center font-semibold text-gray-700">
+                  Nenhum item adicionado
+                </h3>
+              )}
               {cart.map((cart) => (
                 <ProductCart key={cart.id} coffee={cart} controls />
               ))}
             </div>
-            <div className="mt-5 flex flex-col gap-4">
+            <div
+              className={cx('mt-5 flex flex-col gap-4', {
+                'border-t border-gray-500 pt-5': cart.length <= 0,
+              })}
+            >
               <p className="flex items-center justify-between text-sm text-gray-700">
                 Total de itens
                 <span>R$ {PriceFormatted(totalValueOfItems)}</span>
