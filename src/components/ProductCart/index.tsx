@@ -67,13 +67,20 @@ export function ProductCart({ coffee, controls }: CartCoffee) {
         )}
 
         <p
-          className={cx('flex items-center gap-1 text-lg font-bold', {
+          className={cx('flex items-center justify-between text-lg font-bold', {
             'right-0 top-0 mt-2 text-sm xsm:absolute xsm:mt-0 xsm:text-lg':
               controls,
           })}
         >
-          <span className="text-xs font-medium">R$</span>
-          {PriceFormatted(coffee.price)}
+          <div>
+            <span className="pr-1 text-xs font-medium">R$</span>
+            {PriceFormatted(coffee.price * coffee.amount!)}
+          </div>
+          {!controls && (
+            <div className="flex w-11 items-center justify-center rounded bg-gray-400 bg-opacity-80 py-[0.125rem] text-sm font-medium text-purple-primary">
+              {coffee.amount}
+            </div>
+          )}
         </p>
       </div>
 

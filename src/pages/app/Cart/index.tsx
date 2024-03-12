@@ -169,7 +169,7 @@ export function Cart() {
         <div className="w-full">
           <h3 className="mb-4 font-bold text-gray-700">Cafés selecionados</h3>
           <aside className="rounded bg-gray-200 p-10 md:rounded-bl-3xl md:rounded-tr-3xl">
-            <div className="mb-4 flex gap-2">
+            <div className="mb-4 flex items-center gap-2">
               <ShoppingBagOpen className="text-purple-primary" size={20} />
               <p className=" text-gray-800">Carrinho</p>
             </div>

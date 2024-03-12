@@ -31,7 +31,7 @@ export function DropdownCart({ isOpen = false, onClose }: DropDownCartProps) {
           ))}
         </div>
         <NavLink to="/cart">
-          <button className="h-11 w-full rounded border border-purple-primary text-purple-primary">
+          <button className="h-11 w-full rounded border border-purple-primary text-purple-primary transition-colors hover:bg-purple-primary hover:text-white">
             Ir para o carrinho
           </button>
         </NavLink>

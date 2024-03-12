@@ -16,20 +16,22 @@ export const PaymentMethod = forwardRef<
   PaymentMethodInputProps
 >(({ id, Icon, label, ...props }, ref) => {
   return (
-    <div className="flex w-full items-center gap-2 rounded border bg-gray-400 py-3 pl-4 text-xs transition-colors duration-200 checked:border-purple-secondary checked:bg-purple-primary checked:bg-opacity-20  checked:text-purple-secondary hover:border-purple-secondary  hover:bg-opacity-30 md:w-[11.125rem]">
+    <div>
       <input
         id={id}
         type="radio"
         {...props}
         name="paymentMethod"
         ref={ref}
-        className="appearance-none"
+        className="peer hidden"
       />
-      <Icon
-        size={20}
-        className="text-purple-secondary checked:text-purple-primary"
-      />
-      <label htmlFor={id}>{label}</label>
+      <label
+        className="flex w-full items-center gap-2 rounded border bg-gray-400 py-3 pl-4 text-xs transition-colors duration-200 hover:bg-opacity-30 peer-checked:border-purple-secondary peer-checked:bg-purple-primary peer-checked:bg-opacity-20  peer-checked:text-purple-secondary peer-hover:border-purple-secondary  md:w-[11.125rem] "
+        htmlFor={id}
+      >
+        <Icon size={20} className="text-purple-secondary" />
+        {label}
+      </label>
     </div>
   )
 })
