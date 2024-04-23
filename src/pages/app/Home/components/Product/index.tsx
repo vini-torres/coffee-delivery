@@ -14,10 +14,12 @@ export function Product({ coffee }: CoffeeProps) {
   const [amount, setAmount] = useState(1)
   const { handleAddProductInTheCart } = useCart()
 
+  const path = '../../../../../../public/coffees/'
+
   return (
     <div className="relative h-[19.375rem] w-[16rem] rounded rounded-bl-3xl rounded-tr-3xl bg-gray-200 p-4 shadow-md">
       <img
-        src={`./public/coffees/americano.png`}
+        src={`${path}${coffee.imgURL}`}
         alt="Imagem ilustrativa"
         className="absolute -top-5 left-0 right-0 mx-auto w-28"
       />
