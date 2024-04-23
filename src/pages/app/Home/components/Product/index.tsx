@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 
+import img from '../../../../../../public/coffees/americano.png'
 import { InputNumber } from '../../../../../components/InputNumber'
 import { CartCoffeeProps } from '../../../../../components/ProductCart'
 import { useCart } from '../../../../../hooks/useCart'
@@ -14,12 +15,10 @@ export function Product({ coffee }: CoffeeProps) {
   const [amount, setAmount] = useState(1)
   const { handleAddProductInTheCart } = useCart()
 
-  const path = '../../../../../../public/coffees/'
-
   return (
     <div className="relative h-[19.375rem] w-[16rem] rounded rounded-bl-3xl rounded-tr-3xl bg-gray-200 p-4 shadow-md">
       <img
-        src={`${path}${coffee.imgURL}`}
+        src={img}
         alt="Imagem ilustrativa"
         className="absolute -top-5 left-0 right-0 mx-auto w-28"
       />
